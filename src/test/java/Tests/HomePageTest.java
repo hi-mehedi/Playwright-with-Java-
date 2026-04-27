@@ -3,6 +3,7 @@ package Tests;
 import Base.BaseTest;
 import Pages.HomePage;
 import Pages.PicoVendPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -13,8 +14,6 @@ public class HomePageTest extends BaseTest {
     public void testHomePage(){
         HomePage homePage = new HomePage(page);
         PicoVendPage picoVendPage = new PicoVendPage(page);
-        test.info("Navigate Page");
-        page.navigate("https://365retailmarkets.com/");
         test.info("Click Allow all");
         homePage.clickAllowAll();
         test.info("Choose Language");
@@ -22,8 +21,9 @@ public class HomePageTest extends BaseTest {
         test.info("Select Spanish Language");
         homePage.clickSelectLanguageSp();
         String actualText = homePage.getSelectLanguageSp();
+        String expectedText = "Cambiar ubicació";
         test.info("Expected text is visible");
-        assert actualText.contains("Cambiar ubicación");
+        Assert.assertEquals(actualText, expectedText, "Spelling mistake");
         test.info("Reload Page");
         page.reload();
         test.info("Scroll Down");

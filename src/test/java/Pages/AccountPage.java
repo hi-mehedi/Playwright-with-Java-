@@ -3,7 +3,7 @@ package Pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class AccountPage {
+public class AccountPage{
     private Page page;
 
     private Locator email;

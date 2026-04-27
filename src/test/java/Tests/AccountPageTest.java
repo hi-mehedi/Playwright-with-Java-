@@ -12,14 +12,14 @@ public class AccountPageTest extends BaseTest {
     @Test
     public void testAccountPage(){
         HomePage homePage = new HomePage(page);
-        test.info("Navigate Home Page");
-        page.navigate("https://365retailmarkets.com/");
         test.info("Click Account Tab");
         Page accountTab = homePage.clickAccount();
         AccountPage accountPage = new AccountPage(accountTab);
+        accountTab.waitForLoadState();
         test.info("Click Sing up Page");
         Page signUpTab = accountPage.clickSignUp();
         AccountPage signUpPage = new AccountPage(signUpTab);
+        signUpTab.waitForLoadState();
         test.info("Type email");
         signUpPage.typeEmail(email);
     }
